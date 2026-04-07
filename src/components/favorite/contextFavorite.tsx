@@ -1,14 +1,7 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { useState } from "react";
 import type { FavoriteCharacter } from "../../types";
+import { favoriteContext } from "./favoriteContext";
 
-interface FavoritesContextType {
-  favorite: FavoriteCharacter[];
-  isFavorite: (id: number) => boolean;
-  toggleFavorite: (character: FavoriteCharacter) => void;
-}
-const favoriteContext = createContext<FavoritesContextType | undefined>(
-  undefined,
-);
 export function ContextFavoriteProvider({
   children,
 }: {
@@ -32,11 +25,4 @@ export function ContextFavoriteProvider({
       {children}
     </favoriteContext.Provider>
   );
-}
-export function useFavorite() {
-  const contextFromReact = useContext(favoriteContext);
-  if (!contextFromReact) {
-    throw new Error("error: cant use context here");
-  }
-  return contextFromReact;
 }
