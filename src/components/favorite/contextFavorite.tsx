@@ -1,4 +1,4 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useContext, useState } from "react";
 import type { FavoriteCharacter } from "../../types";
 
 interface FavoritesContextType {
@@ -32,4 +32,11 @@ export function ContextFavoriteProvider({
       {children}
     </favoriteContext.Provider>
   );
+}
+export function useFavorite() {
+  const contextFromReact = useContext(favoriteContext);
+  if (!contextFromReact) {
+    throw new Error("error: cant use context here");
+  }
+  return contextFromReact;
 }
