@@ -10,6 +10,8 @@ export interface Character {
 export interface CharacterResponse {
   results: Character[];
 }
+
+//favorite types
 export interface FavoriteCharacter extends Character {
   addedAt: number;
 }

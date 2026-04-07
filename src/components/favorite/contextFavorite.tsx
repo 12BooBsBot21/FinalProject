@@ -27,7 +27,9 @@ export function ContextFavoriteProvider({
     result.push(character);
     setFavorite(result);
   }
-  <favoriteContext.Provider value={{ favorite, isFavorite, toggleFavorite }}>
-    {children}
-  </favoriteContext.Provider>;
+  return (
+    <favoriteContext.Provider value={{ favorite, isFavorite, toggleFavorite }}>
+      {children}
+    </favoriteContext.Provider>
+  );
 }
