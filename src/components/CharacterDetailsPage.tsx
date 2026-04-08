@@ -1,6 +1,7 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { useFetch } from "../hooks/useFetch";
 import type { Character } from "../types";
+import { useFavorite } from "./favorite/useFavorite";
 
 export default function CharacterDetailsPage() {
   const { id } = useParams();
@@ -15,6 +16,9 @@ export default function CharacterDetailsPage() {
   const { data, isLoading, error, statusResponse } = useFetch<Character>(
     endUrl ? `/${endUrl}` : "",
   );
+  const { isFavorite, toggleFavorite } = useFavorite();
+
+  const iconFavorite = data ? (isFavorite(data.id) ? "♥" : "♡") : false;
 
   if (!validId) {
     return (
@@ -45,6 +49,7 @@ export default function CharacterDetailsPage() {
       <p>gender:{data.gender}</p>
       <p>species:{data.species}</p>
       <button onClick={() => navigate("/")}>Back to list</button>
+      <button onClick={() => toggleFavorite(data)}>{iconFavorite}</button>
     </div>
   );
 }

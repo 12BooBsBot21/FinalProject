@@ -13,7 +13,7 @@ export interface CharacterResponse {
 
 //favorite types
 export interface FavoriteCharacter extends Character {
-  addedAt: number;
+  addedAt?: number;
 }
 export interface FavoriteCharacterArr {
   favorites: FavoriteCharacter[];
