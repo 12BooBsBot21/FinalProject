@@ -12,12 +12,10 @@ export function loadLockStor(): FavoriteCharacter[] {
     return [];
   }
 }
-export function saveLockStor(character: FavoriteCharacter): void {
-  if (!character) return;
+export function saveLockStor(characterArr: FavoriteCharacter[]): void {
+  if (!characterArr) return;
   try {
-    const loadFavorites = loadLockStor();
-    loadFavorites.push(character);
-    const allCharacter = loadFavorites;
+    const allCharacter = characterArr;
     localStorage.setItem(keyLS, JSON.stringify(allCharacter));
   } catch (e) {
     console.error(e);
