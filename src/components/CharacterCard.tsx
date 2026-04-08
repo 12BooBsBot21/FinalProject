@@ -16,7 +16,6 @@ export default function CharacterCard({ character }: CharacterCardProps) {
         <h3>{character.name}</h3>
         <p>Status: {character.status}</p>
       </Link>
-
       <button onClick={() => toggleFavorite(character)}>{iconFavorite}</button>
     </div>
   );

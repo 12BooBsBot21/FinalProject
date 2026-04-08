@@ -5,6 +5,7 @@ import CharacterList from "./components/CaractersList";
 import { useState } from "react";
 import SearchBar from "./components/SearchBar";
 import { useDebounce } from "./hooks/useDebouns";
+import { Link } from "react-router-dom";
 
 function App() {
   const [search, setSearch] = useState<string>("");
@@ -18,6 +19,7 @@ function App() {
   return (
     <div>
       <h1>Rick and Morty</h1>
+      <Link to={"/favorites"}>избранное</Link>
       <SearchBar valueSearching={search} setValueSearching={setSearch} />
       <CharacterList characters={data?.results ?? []} />
     </div>

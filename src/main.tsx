@@ -5,6 +5,7 @@ import App from "./App.tsx";
 import { ContextFavoriteProvider } from "./components/favorite/favoriteContextProvaider.tsx";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import CharacterDetailsPage from "./components/CharacterDetailsPage.tsx";
+import FavoritePage from "./components/favorite/FavoritesPage.tsx";
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <ContextFavoriteProvider>
@@ -12,6 +13,7 @@ createRoot(document.getElementById("root")!).render(
         <Routes>
           <Route path="/" element={<App />} />
           <Route path="/characters/:id" element={<CharacterDetailsPage />} />
+          <Route path="/favorites" element={<FavoritePage />} />
         </Routes>
       </BrowserRouter>
     </ContextFavoriteProvider>
