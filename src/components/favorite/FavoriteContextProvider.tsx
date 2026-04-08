@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import type { FavoriteCharacter } from "../../types";
-import { favoriteContext } from "./favoriteContext";
-import { loadLockStor, saveLockStor } from "./LockalStoreg";
+import { favoriteContext } from "./FavoriteContext";
+import { loadLockStor, saveLockStor } from "./LocalStorage";
 
 export function ContextFavoriteProvider({
   children,

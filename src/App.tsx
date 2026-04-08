@@ -1,7 +1,7 @@
 import "./App.css";
 import { useFetch } from "./hooks/useFetch";
 import type { CharacterResponse } from "./types";
-import CharacterList from "./components/CaractersList";
+import CharacterList from "./components/CharactersList";
 import { useState } from "react";
 import SearchBar from "./components/SearchBar";
 import { useDebounce } from "./hooks/useDebouns";
