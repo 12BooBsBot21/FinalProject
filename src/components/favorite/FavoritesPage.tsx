@@ -1,5 +1,5 @@
 import { useFavorite } from "./useFavorite";
-import CharacterList from "../CharactersList";
+import CharacterList from "../character/CharactersList";
 import { useNavigate } from "react-router-dom";
 export default function FavoritePage() {
   const { favorite } = useFavorite();

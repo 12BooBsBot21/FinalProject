@@ -1,10 +1,10 @@
 import "./App.css";
 import { useFetch } from "./hooks/useFetch";
 import type { CharacterResponse } from "./types";
-import CharacterList from "./components/CharactersList";
+import CharacterList from "./components/character/CharactersList";
 import { useState } from "react";
-import SearchBar from "./components/SearchBar";
-import { useDebounce } from "./hooks/useDebouns";
+import SearchBar from "./components/searchBar/SearchBar";
+import { useDebounce } from "./hooks/useDebounce";
 import { Link } from "react-router-dom";
 
 function App() {
