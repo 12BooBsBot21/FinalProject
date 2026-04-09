@@ -2,7 +2,7 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
 import App from "./App.tsx";
-import { ContextFavoriteProvider } from "./components/favorite/favoriteContextProvider.tsx";
+import { ContextFavoriteProvider } from "./components/favorite/favoriteContextProvaider.tsx";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import CharacterDetailsPage from "./components/CharacterDetailsPage.tsx";
 import FavoritePage from "./components/favorite/FavoritesPage.tsx";

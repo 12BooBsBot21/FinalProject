@@ -4,7 +4,7 @@ import type { CharacterResponse } from "./types";
 import CharacterList from "./components/CharactersList";
 import { useState } from "react";
 import SearchBar from "./components/SearchBar";
-import { useDebounce } from "./hooks/useDebounce";
+import { useDebounce } from "./hooks/useDebouns";
 import { Link } from "react-router-dom";
 
 function App() {
