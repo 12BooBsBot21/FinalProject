@@ -8,10 +8,10 @@ interface CharacterCardProps {
 
 export default function CharacterCard({ character }: CharacterCardProps) {
   const { isFavorite, toggleFavorite } = useFavorite();
-  const iconFavorite = isFavorite(character.id) ? "♥" : "♡";
+
   return (
     <article className={s.card}>
-      <Link to={`/character/${character.id}`} className={s.cardLink}>
+      <Link to={`/characters/${character.id}`} className={s.cardLink}>
         <div className={s.cardImageWrapper}>
           <img
             src={character.image}
@@ -32,9 +32,9 @@ export default function CharacterCard({ character }: CharacterCardProps) {
           type="button"
           onClick={() => toggleFavorite(character)}
           className={`${s.button} 
-            ${iconFavorite ? s.buttonPrimary : s.buttonSecondary}`}
+            ${isFavorite(character.id) ? s.buttonPrimary : s.buttonSecondary}`}
         >
-          {iconFavorite ? "♥ В избранном" : "♡ В избранное"}
+          {isFavorite(character.id) ? "♥ В избранном" : "♡ В избранное"}
         </button>
       </div>
     </article>
