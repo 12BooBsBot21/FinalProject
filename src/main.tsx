@@ -1,22 +1,14 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
-import App from "./App.tsx";
 
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import CharacterDetailsPage from "./components/character/CharacterDetailsPage.tsx";
-import FavoritePage from "./components/favorite/FavoritesPage.tsx";
+import { RouterProvider } from "react-router-dom";
 import { ContextFavoriteProvider } from "./components/favorite/FavoriteContextProvider.tsx";
+import { routes } from "./routes.tsx";
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <ContextFavoriteProvider>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<App />} />
-          <Route path="/characters/:id" element={<CharacterDetailsPage />} />
-          <Route path="/favorites" element={<FavoritePage />} />
-        </Routes>
-      </BrowserRouter>
+      <RouterProvider router={routes} />
     </ContextFavoriteProvider>
   </StrictMode>,
 );

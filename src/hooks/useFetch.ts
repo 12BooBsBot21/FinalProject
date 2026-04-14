@@ -6,6 +6,9 @@ export function useFetch<T>(urlEnd: string) {
   const [error, setError] = useState<string | null>(null);
   const [statusResponse, setStatusResponse] = useState<number | null>();
   const urlBase: string = import.meta.env.VITE_API_BASE_URL;
+  setError(null);
+  setStatusResponse(null);
+  setData(undefined);
   useEffect(() => {
     const fetchData = async () => {
       if (!urlEnd) {
@@ -17,6 +20,7 @@ export function useFetch<T>(urlEnd: string) {
         const response = await fetch(`${urlBase}${urlEnd}`);
         if (response.status === 404) {
           setStatusResponse(response.status);
+          setData(undefined);
           return;
         }
         if (!response.ok) {
