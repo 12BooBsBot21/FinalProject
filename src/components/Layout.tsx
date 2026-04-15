@@ -1,17 +1,40 @@
-import { Link, Outlet } from "react-router-dom";
+import { NavLink, Outlet } from "react-router-dom";
 import SearchBar from "./searchBar/SearchBar";
 import { useState } from "react";
 
 export default function Layout() {
   const [search, setSearch] = useState<string>("");
   return (
-    <div>
-      <h1>Rick and Morty</h1>
-      <Link to={"/favorites"} className="buttonFavorite">
-        избранное
-      </Link>
+    <div className="appShell">
+      <header className="appHeader">
+        <div className="appTitleBox">
+          <h1 className="appTitle">Rick and Morty Explorer</h1>
+          <p className="appSubtitle">Поиск персонажей и управление избранным</p>
+        </div>
+        <nav className="appNav">
+          <NavLink
+            to="/"
+            end
+            className={({ isActive }) =>
+              `buttonGhost ${isActive ? "buttonFavorite" : ""}`
+            }
+          >
+            Главная
+          </NavLink>
+          <NavLink
+            to="/favorites"
+            className={({ isActive }) =>
+              `buttonGhost ${isActive ? "buttonFavorite" : ""}`
+            }
+          >
+            Избранное
+          </NavLink>
+        </nav>
+      </header>
       <SearchBar valueSearching={search} setValueSearching={setSearch} />
-      <Outlet context={search} />
+      <main className="appContent">
+        <Outlet context={search} />
+      </main>
     </div>
   );
 }
