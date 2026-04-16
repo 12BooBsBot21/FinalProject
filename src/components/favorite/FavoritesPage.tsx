@@ -26,7 +26,7 @@ export default function FavoritePage() {
         </div>
       </div>
     );
-  const filterFavorites = favorite.filter((x) =>
+  const filteredFavorites = favorite.filter((x) =>
     x.name.toLowerCase().includes(search.toLowerCase()),
   );
 
@@ -38,7 +38,7 @@ export default function FavoritePage() {
           Back to list
         </button>
       </div>
-      <CharacterList characters={search ? filterFavorites : favorite} />
+      <CharacterList characters={search ? filteredFavorites : favorite} />
     </section>
   );
 }

@@ -1,6 +1,6 @@
 import type { FavoriteCharacter } from "../../types";
 const keyLS: string = "favorites";
-export function loadLockStor(): FavoriteCharacter[] {
+export function loadLocalStorage(): FavoriteCharacter[] {
   try {
     const dataLS = localStorage.getItem(keyLS);
     if (!dataLS) return [];
@@ -12,11 +12,10 @@ export function loadLockStor(): FavoriteCharacter[] {
     return [];
   }
 }
-export function saveLockStor(characterArr: FavoriteCharacter[]): void {
+export function saveLocalStorage(characterArr: FavoriteCharacter[]): void {
   if (!characterArr) return;
   try {
-    const allCharacter = characterArr;
-    localStorage.setItem(keyLS, JSON.stringify(allCharacter));
+    localStorage.setItem(keyLS, JSON.stringify(characterArr));
   } catch (e) {
     console.error(e);
   }

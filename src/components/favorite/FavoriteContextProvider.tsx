@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import type { FavoriteCharacter } from "../../types";
 import { favoriteContext } from "./FavoriteContext";
-import { loadLockStor, saveLockStor } from "./LocalStorage";
+import { loadLocalStorage, saveLocalStorage } from "./LocalStorage";
 
 export function ContextFavoriteProvider({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const LockStorArr = loadLockStor();
+  const LockStorArr = loadLocalStorage();
   const [favorite, setFavorite] = useState<FavoriteCharacter[]>(LockStorArr);
   function isFavorite(id: number) {
     const resultSearchingId = favorite.filter((x) => x.id === id);
@@ -27,7 +27,7 @@ export function ContextFavoriteProvider({
       return;
     }
     setFavorite(newFavoriteArr);
-    saveLockStor(newFavoriteArr);
+    saveLocalStorage(newFavoriteArr);
   }
   return (
     <favoriteContext.Provider value={{ favorite, isFavorite, toggleFavorite }}>
