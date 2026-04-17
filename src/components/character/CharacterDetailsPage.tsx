@@ -9,13 +9,9 @@ export default function CharacterDetailsPage() {
   const { id } = useParams();
   const numericId = Number(id);
 
-  const validId =
-    id !== undefined &&
-    id !== "" &&
-    Number.isInteger(numericId) &&
-    numericId > 0;
+  const isValidId = Number.isInteger(numericId) && numericId > 0;
 
-  const endUrl = validId ? id : "";
+  const endUrl = isValidId ? id : "";
   const navigate = useNavigate();
 
   const { data, isLoading, error, statusResponse } = useFetch<Character>(
@@ -25,7 +21,7 @@ export default function CharacterDetailsPage() {
   const { isFavorite, toggleFavorite } = useFavorite();
   const favorite = data ? isFavorite(data.id) : false;
 
-  if (!validId) {
+  if (!isValidId) {
     return (
       <div className={styles.stateBoxWrapper}>
         <div className={styles.stateBox}>
