@@ -2,7 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import Layout from "./components/Layout";
 import CharacterPage from "./components/CharacterPage";
 import FavoritePage from "./components/favorite/FavoritesPage";
-import CharacterDetailsPage from "./components/character/CharacterDetailsPage";
+import CharacterDetailsPage from "./components/character/detailPages/CharacterDetailsPage";
 
 export const routes = createBrowserRouter([
   {
