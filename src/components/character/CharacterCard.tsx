@@ -30,7 +30,7 @@ export default function CharacterCard({ character }: CharacterCardProps) {
       <div className={s.cardAction}>
         <button
           type="button"
-          onClick={() => toggleFavorite(character)}
+          onClick={() => toggleFavorite(character.id)}
           className={`${s.button} 
             ${isFavorite(character.id) ? s.buttonPrimary : s.buttonSecondary}`}
         >

@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import type { FavoriteCharacter } from "../../types";
 import { favoriteContext } from "./FavoriteContext";
 import { loadLocalStorage, saveLocalStorage } from "./LocalStorage";
 
@@ -9,19 +8,26 @@ export function ContextFavoriteProvider({
   children: React.ReactNode;
 }) {
   const LockStorArr = loadLocalStorage();
-  const [favorite, setFavorite] = useState<FavoriteCharacter[]>(LockStorArr);
+  const [favorite, setFavorite] = useState<number[]>(LockStorArr);
   function isFavorite(id: number) {
-    const resultSearchingId = favorite.filter((x) => x.id === id);
+    const resultSearchingId = favorite.filter((x) => x === id);
     if (resultSearchingId.length <= 0) return false;
     return true;
   }
-  function toggleFavorite(character: FavoriteCharacter): void {
-    const resultSearchChar = favorite.filter((x) => x.id === character.id);
-    let newFavoriteArr: FavoriteCharacter[] = [];
-    if (resultSearchChar.length === 0) {
-      newFavoriteArr = [{ ...character, addedAt: Date.now() }, ...favorite];
-    } else if (resultSearchChar.length > 0) {
-      newFavoriteArr = favorite.filter((x) => x.id !== character.id);
+  function toggleFavorite(characterId: number): void {
+    const resultSearchChar = isFavorite(characterId);
+    const newFavoriteArr: number[] = [];
+    if (!resultSearchChar) {
+      newFavoriteArr.push(...favorite, characterId);
+    } else if (resultSearchChar) {
+      const deletedCharacterFromFavorite = favorite.filter(
+        (x) => x !== characterId,
+      );
+      newFavoriteArr.splice(
+        0,
+        newFavoriteArr.length,
+        ...deletedCharacterFromFavorite,
+      );
     } else {
       console.error("we have a problem with this character");
       return;

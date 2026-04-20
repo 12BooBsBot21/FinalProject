@@ -1,10 +1,10 @@
 import type { NavigateFunction } from "react-router-dom";
-import type { Character, FavoriteCharacter } from "../../../types";
+import type { Character } from "../../../types";
 import styles from "../allCharacterComponents.module.css";
 interface DetailsMainPageProps {
   data: Character;
   navigate: NavigateFunction;
-  toggleFavorite: (character: FavoriteCharacter) => void;
+  toggleFavorite: (character: number) => void;
   favorite: boolean;
 }
 export default function DetailsMainPage({
@@ -57,7 +57,7 @@ export default function DetailsMainPage({
 
             <button
               type="button"
-              onClick={() => toggleFavorite(data)}
+              onClick={() => toggleFavorite(data.id)}
               className={`${styles.button} ${
                 favorite ? styles.buttonPrimary : styles.buttonSecondary
               }`}

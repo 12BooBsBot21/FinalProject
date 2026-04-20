@@ -8,9 +8,9 @@ import s from "./character/allCharacterComponents.module.css";
 
 export default function CharacterPage() {
   const search = useOutletContext<string>();
-  const debounce = useDebounce(search, 1100);
+  const nameAfterDebounce = useDebounce(search, 1100);
   const { data, isLoading, error } = useFetch<CharacterResponse>(
-    `?name=${debounce}`,
+    `?name=${nameAfterDebounce}`,
   );
   if (isLoading) {
     return (

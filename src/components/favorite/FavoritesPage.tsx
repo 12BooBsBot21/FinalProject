@@ -3,12 +3,40 @@ import CharacterList from "../character/CharactersList";
 import s from "./favoritePage.module.css";
 import { useNavigate, useOutletContext } from "react-router-dom";
 import listS from "../character/allCharacterComponents.module.css";
+import { useFetch } from "../../hooks/useFetch";
+import type { Character } from "../../types";
 
 export default function FavoritePage() {
   const search = useOutletContext<string>();
   const { favorite } = useFavorite();
+  const { data, isLoading, error } = useFetch<Character[]>(
+    `/${favorite.join(",")}`,
+  );
+
   const navigate = useNavigate();
-  if (favorite.length === 0)
+  if (isLoading) {
+    return (
+      <div className={listS.stateBoxWrapper}>
+        <div className={listS.stateBox}>
+          <h2 className={listS.stateTitle}>Loading...</h2>
+          <p className={listS.stateText}>Загружаем список персонажей.</p>
+        </div>
+      </div>
+    );
+  }
+  if (error) {
+    return (
+      <div className={listS.stateBoxWrapper}>
+        <div className={`${listS.stateBox} ${listS.stateBoxError}`}>
+          <h2 className={`${listS.stateTitle} ${listS.stateTitleError}`}>
+            Error
+          </h2>
+          <p className={listS.stateText}>{error}</p>
+        </div>
+      </div>
+    );
+  }
+  if (data?.length === 0 || !data)
     return (
       <div className={listS.stateBoxWrapper}>
         <div className={listS.stateBox}>
@@ -26,7 +54,8 @@ export default function FavoritePage() {
         </div>
       </div>
     );
-  const filteredFavorites = favorite.filter((x) =>
+
+  const filteredFavorites = data?.filter((x) =>
     x.name.toLowerCase().includes(search.toLowerCase()),
   );
 
@@ -38,7 +67,7 @@ export default function FavoritePage() {
           Back to list
         </button>
       </div>
-      <CharacterList characters={search ? filteredFavorites : favorite} />
+      <CharacterList characters={search ? filteredFavorites : data} />
     </section>
   );
 }
