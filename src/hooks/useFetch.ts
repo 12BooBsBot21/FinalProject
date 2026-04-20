@@ -7,10 +7,6 @@ export function useFetch<T>(urlEnd: string) {
   const [statusResponse, setStatusResponse] = useState<number | null>();
   const urlBase: string = import.meta.env.VITE_API_BASE_URL;
   useEffect(() => {
-    const controller = new AbortController();
-    setError(null);
-    setStatusResponse(null);
-    setData(undefined);
     const fetchData = async () => {
       if (!urlEnd) {
         setIsLoading(false);
@@ -18,9 +14,7 @@ export function useFetch<T>(urlEnd: string) {
       }
       try {
         setIsLoading(true);
-        const response = await fetch(`${urlBase}${urlEnd}`, {
-          signal: controller.signal,
-        });
+        const response = await fetch(`${urlBase}${urlEnd}`);
         if (response.status === 404) {
           setStatusResponse(response.status);
           setData(undefined);
@@ -39,9 +33,6 @@ export function useFetch<T>(urlEnd: string) {
       }
     };
     fetchData();
-    return () => {
-      controller.abort();
-    };
   }, [urlEnd, urlBase]);
   return { data, isLoading, error, statusResponse };
 }
