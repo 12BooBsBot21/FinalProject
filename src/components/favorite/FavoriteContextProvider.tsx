@@ -10,9 +10,7 @@ export function ContextFavoriteProvider({
   const LockStorArr = loadLocalStorage();
   const [favorite, setFavorite] = useState<number[]>(LockStorArr);
   function isFavorite(id: number) {
-    const resultSearchingId = favorite.filter((x) => x === id);
-    if (resultSearchingId.length <= 0) return false;
-    return true;
+    return favorite.includes(id);
   }
   function toggleFavorite(characterId: number): void {
     const resultSearchChar = isFavorite(characterId);
