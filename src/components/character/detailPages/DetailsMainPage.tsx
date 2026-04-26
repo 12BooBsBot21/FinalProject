@@ -4,13 +4,13 @@ import styles from "../allCharacterComponents.module.css";
 interface DetailsMainPageProps {
   data: Character;
   navigate: NavigateFunction;
-  toggleFavorite: (character: number) => void;
+  onToggleFavorite: (character: number) => void;
   favorite: boolean;
 }
 export default function DetailsMainPage({
   data,
   navigate,
-  toggleFavorite,
+  onToggleFavorite,
   favorite,
 }: DetailsMainPageProps) {
   return (
@@ -57,7 +57,7 @@ export default function DetailsMainPage({
 
             <button
               type="button"
-              onClick={() => toggleFavorite(data.id)}
+              onClick={() => onToggleFavorite(data.id)}
               className={`${styles.button} ${
                 favorite ? styles.buttonPrimary : styles.buttonSecondary
               }`}

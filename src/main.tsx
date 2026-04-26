@@ -3,12 +3,14 @@ import { createRoot } from "react-dom/client";
 import "./index.css";
 
 import { RouterProvider } from "react-router-dom";
-import { ContextFavoriteProvider } from "./components/favorite/FavoriteContextProvider.tsx";
 import { routes } from "./routes.tsx";
+import { Provider } from "react-redux";
+import { setUpStore } from "./components/RTK/store.ts";
+
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <ContextFavoriteProvider>
+    <Provider store={setUpStore()}>
       <RouterProvider router={routes} />
-    </ContextFavoriteProvider>
+    </Provider>
   </StrictMode>,
 );

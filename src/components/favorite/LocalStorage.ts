@@ -3,9 +3,22 @@ export function loadLocalStorage(): number[] {
   try {
     const dataLS = localStorage.getItem(keyLS);
     if (!dataLS) return [];
-    const parseDataLS: number[] = JSON.parse(dataLS);
+    const parseDataLS: unknown = JSON.parse(dataLS);
     if (!Array.isArray(parseDataLS)) return [];
-    return parseDataLS;
+    return parseDataLS
+      .map((item) => {
+        if (typeof item === "number") return item;
+        if (
+          typeof item === "object" &&
+          item !== null &&
+          "id" in item &&
+          typeof item.id === "number"
+        ) {
+          return item.id;
+        }
+        return null;
+      })
+      .filter((id): id is number => id !== null);
   } catch (e) {
     console.error(e);
     return [];

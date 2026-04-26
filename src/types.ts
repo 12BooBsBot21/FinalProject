@@ -18,3 +18,6 @@ export interface FavoriteCharacter extends Character {
 export interface FavoriteCharacterArr {
   favorites: FavoriteCharacter[];
 }
+export interface FavoriteIdSlice {
+  ids: number[];
+}

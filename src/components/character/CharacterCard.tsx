@@ -1,14 +1,16 @@
 import { Link } from "react-router-dom";
 import type { Character } from "../../types";
-import { useFavorite } from "../favorite/useFavorite";
 import s from "./allCharacterComponents.module.css";
+import { toggleFavorite } from "../RTK/userSlise";
+import { useAppDispatch } from "../RTK/hookForRtk";
+import useIsFavorite from "../RTK/useIsFavorite";
 interface CharacterCardProps {
   character: Character;
 }
 
 export default function CharacterCard({ character }: CharacterCardProps) {
-  const { isFavorite, toggleFavorite } = useFavorite();
-
+  const dispatch = useAppDispatch();
+  const favorite = useIsFavorite(character.id);
   return (
     <article className={s.card}>
       <Link to={`/characters/${character.id}`} className={s.cardLink}>
@@ -30,11 +32,11 @@ export default function CharacterCard({ character }: CharacterCardProps) {
       <div className={s.cardAction}>
         <button
           type="button"
-          onClick={() => toggleFavorite(character.id)}
+          onClick={() => dispatch(toggleFavorite(character.id))}
           className={`${s.button} 
-            ${isFavorite(character.id) ? s.buttonPrimary : s.buttonSecondary}`}
+            ${favorite ? s.buttonPrimary : s.buttonSecondary}`}
         >
-          {isFavorite(character.id) ? "♥ В избранном" : "♡ В избранное"}
+          {favorite ? "♥ В избранном" : "♡ В избранное"}
         </button>
       </div>
     </article>
