@@ -2,16 +2,16 @@ import { useNavigate, useParams } from "react-router-dom";
 
 import { useFetch } from "../../../shared/api/useFetch";
 import type { Character } from "../../../entities/character/model/types";
-import DetailsBadId from "./DetailsBadId";
-import DetailsResponseNotFound from "./DetailsResponseNotFound";
-import DetailsBadData from "./DetailsBadData";
 import DetailsMainPage from "./DetailsMainPage";
 import { toggleFavorite } from "../../../features/favorite/model/favoriteSlice";
 import { useAppDispatch, useAppSelector } from "../../../app/store/hooks";
 import {
+  NotCorrectIndicate,
   ShowError,
   ShowLoading,
-} from "../../../shared/ui/search-bar/state-view/StateView";
+  ShowNoData,
+  ShowNotFound,
+} from "../../../shared/ui/state-view/StateView";
 
 export default function CharacterDetailsPage() {
   const dispatch = useAppDispatch();
@@ -33,7 +33,11 @@ export default function CharacterDetailsPage() {
   };
 
   if (!isValidId) {
-    return <DetailsBadId />;
+    return (
+      <NotCorrectIndicate button="back to lit">
+        не коректный id
+      </NotCorrectIndicate>
+    );
   }
 
   if (isLoading) {
@@ -41,15 +45,15 @@ export default function CharacterDetailsPage() {
   }
 
   if (statusResponse === 404) {
-    return <DetailsResponseNotFound />;
+    return <ShowNotFound>Персонаж с таким id не найден.</ShowNotFound>;
   }
 
   if (error) {
-    return <ShowError>{error}</ShowError>;
+    return <ShowError button="back to list">{error}</ShowError>;
   }
 
   if (!data) {
-    return <DetailsBadData />;
+    return <ShowNoData button="back to list">non data</ShowNoData>;
   }
 
   return (

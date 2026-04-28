@@ -1,4 +1,4 @@
-import { ShowNotFound } from "../../../shared/ui/search-bar/state-view/StateView";
+import { ShowNotFound } from "../../../shared/ui/state-view/StateView";
 import type { Character } from "../model/types";
 import CharacterCard from "./CharacterCard";
 import s from "./allCharacterComponents.module.css";

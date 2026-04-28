@@ -8,7 +8,7 @@ import {
   ShowError,
   ShowLoading,
   ShowNotFound,
-} from "../../../shared/ui/search-bar/state-view/StateView";
+} from "../../../shared/ui/state-view/StateView";
 
 export default function FavoritePage() {
   const search = useOutletContext<string>();
@@ -20,18 +20,9 @@ export default function FavoritePage() {
   const navigate = useNavigate();
   if (favoriteIds.length === 0)
     return (
-      <>
-        <ShowNotFound>
-          Добавь персонажей в избранное на главной странице.
-        </ShowNotFound>
-        <button
-          type="button"
-          onClick={() => navigate("/")}
-          className={s.buttonBack}
-        >
-          Back to list
-        </button>
-      </>
+      <ShowNotFound button="Back to list">
+        Добавь персонажей в избранное на главной странице.
+      </ShowNotFound>
     );
 
   if (isLoading) {

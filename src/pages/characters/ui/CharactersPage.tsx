@@ -2,9 +2,12 @@ import { useOutletContext } from "react-router-dom";
 import { useDebounce } from "../../../shared/lib/useDebounce";
 import { useFetch } from "../../../shared/api/useFetch";
 import type { CharacterResponse } from "../../../entities/character/model/types";
-
 import CharacterList from "../../../entities/character/ui/CharactersList";
-import s from "../../../entities/character/ui/allCharacterComponents.module.css";
+import {
+  ShowError,
+  ShowLoading,
+  ShowNoData,
+} from "../../../shared/ui/state-view/StateView";
 
 export default function CharacterPage() {
   const search = useOutletContext<string>();
@@ -13,34 +16,13 @@ export default function CharacterPage() {
     `?name=${nameAfterDebounce}`,
   );
   if (isLoading) {
-    return (
-      <div className={s.stateBoxWrapper}>
-        <div className={s.stateBox}>
-          <h2 className={s.stateTitle}>Loading...</h2>
-          <p className={s.stateText}>Загружаем список персонажей.</p>
-        </div>
-      </div>
-    );
+    return <ShowLoading>Загружаем список персонажей.</ShowLoading>;
   }
   if (error) {
-    return (
-      <div className={s.stateBoxWrapper}>
-        <div className={`${s.stateBox} ${s.stateBoxError}`}>
-          <h2 className={`${s.stateTitle} ${s.stateTitleError}`}>Error</h2>
-          <p className={s.stateText}>{error}</p>
-        </div>
-      </div>
-    );
+    return <ShowError>{error}</ShowError>;
   }
   if (!data) {
-    return (
-      <div className={s.stateBoxWrapper}>
-        <div className={s.stateBox}>
-          <h2 className={s.stateTitle}>No data</h2>
-          <p className={s.stateText}>Попробуй изменить запрос поиска.</p>
-        </div>
-      </div>
-    );
+    return <ShowNoData>non data</ShowNoData>;
   }
   return (
     <div>

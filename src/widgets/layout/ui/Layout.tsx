@@ -1,5 +1,5 @@
 import { NavLink, Outlet } from "react-router-dom";
-import SearchBar from "../../../shared/ui/search-bar/search-bar/SearchBar";
+import SearchBar from "../../../shared/ui/search-bar/SearchBar";
 import { useState } from "react";
 
 export default function Layout() {
