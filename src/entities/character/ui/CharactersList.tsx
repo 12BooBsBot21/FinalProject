@@ -1,3 +1,4 @@
+import { ShowNotFound } from "../../../shared/ui/search-bar/state-view/StateView";
 import type { Character } from "../model/types";
 import CharacterCard from "./CharacterCard";
 import s from "./allCharacterComponents.module.css";
@@ -8,14 +9,7 @@ interface CharacterListProps {
 
 export default function CharacterList({ characters }: CharacterListProps) {
   if (characters.length === 0)
-    return (
-      <div className={s.stateBoxWrapper}>
-        <div className={s.stateBox}>
-          <h1 className={s.stateTitle}>Nothing found</h1>
-          <p className={s.stateText}>Ничего не найдено по вашему запросу.</p>
-        </div>
-      </div>
-    );
+    return <ShowNotFound>Ничего не найдено по вашему запросу.</ShowNotFound>;
   return (
     <section className={s.listWrapper}>
       <div className={s.listGrid}>

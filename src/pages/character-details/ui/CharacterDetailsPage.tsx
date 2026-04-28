@@ -3,13 +3,15 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useFetch } from "../../../shared/api/useFetch";
 import type { Character } from "../../../entities/character/model/types";
 import DetailsBadId from "./DetailsBadId";
-import DetailsLoading from "./DetailsLoading";
 import DetailsResponseNotFound from "./DetailsResponseNotFound";
-import DetailsErrorsPage from "./DetailsErrorsPage";
 import DetailsBadData from "./DetailsBadData";
 import DetailsMainPage from "./DetailsMainPage";
 import { toggleFavorite } from "../../../features/favorite/model/favoriteSlice";
 import { useAppDispatch, useAppSelector } from "../../../app/store/hooks";
+import {
+  ShowError,
+  ShowLoading,
+} from "../../../shared/ui/search-bar/state-view/StateView";
 
 export default function CharacterDetailsPage() {
   const dispatch = useAppDispatch();
@@ -31,23 +33,23 @@ export default function CharacterDetailsPage() {
   };
 
   if (!isValidId) {
-    return <DetailsBadId navigate={navigate} />;
+    return <DetailsBadId />;
   }
 
   if (isLoading) {
-    return <DetailsLoading />;
+    return <ShowLoading>Загрузка</ShowLoading>;
   }
 
   if (statusResponse === 404) {
-    return <DetailsResponseNotFound navigate={navigate} />;
+    return <DetailsResponseNotFound />;
   }
 
   if (error) {
-    return <DetailsErrorsPage navigate={navigate} error={error} />;
+    return <ShowError>{error}</ShowError>;
   }
 
   if (!data) {
-    return <DetailsBadData navigate={navigate} />;
+    return <DetailsBadData />;
   }
 
   return (

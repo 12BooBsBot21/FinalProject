@@ -1,12 +1,8 @@
-import type { NavigateFunction } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import styles from "../../../entities/character/ui/allCharacterComponents.module.css";
 
-interface DetailsResponseNotFoundProps {
-  navigate: NavigateFunction;
-}
-export default function DetailsResponseNotFound({
-  navigate,
-}: DetailsResponseNotFoundProps) {
+export default function DetailsResponseNotFound() {
+  const navigate = useNavigate();
   return (
     <div className={styles.stateBoxWrapper}>
       <div className={styles.stateBox}>

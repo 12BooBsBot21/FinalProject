@@ -15,7 +15,7 @@ export interface CharacterResponse {
 export interface FavoriteCharacter extends Character {
   addedAt?: number;
 }
-export interface FavoriteCharacterArr {
+export interface FavoriteCharacters {
   favorites: FavoriteCharacter[];
 }
 export interface FavoriteIdSlice {

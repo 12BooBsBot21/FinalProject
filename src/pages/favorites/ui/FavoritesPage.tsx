@@ -1,10 +1,14 @@
 import CharacterList from "../../../entities/character/ui/CharactersList";
 import s from "./favoritePage.module.css";
 import { useNavigate, useOutletContext } from "react-router-dom";
-import listS from "../../../entities/character/ui/allCharacterComponents.module.css";
 import { useFetch } from "../../../shared/api/useFetch";
 import type { Character } from "../../../entities/character/model/types";
 import { useAppSelector } from "../../../app/store/hooks";
+import {
+  ShowError,
+  ShowLoading,
+  ShowNotFound,
+} from "../../../shared/ui/search-bar/state-view/StateView";
 
 export default function FavoritePage() {
   const search = useOutletContext<string>();
@@ -16,63 +20,26 @@ export default function FavoritePage() {
   const navigate = useNavigate();
   if (favoriteIds.length === 0)
     return (
-      <div className={listS.stateBoxWrapper}>
-        <div className={listS.stateBox}>
-          <h2 className={listS.stateTitle}>No favorites yet</h2>
-          <p className={listS.stateText}>
-            Добавь персонажей в избранное на главной странице.
-          </p>
-          <button
-            type="button"
-            onClick={() => navigate("/")}
-            className={s.buttonBack}
-          >
-            Back to list
-          </button>
-        </div>
-      </div>
+      <>
+        <ShowNotFound>
+          Добавь персонажей в избранное на главной странице.
+        </ShowNotFound>
+        <button
+          type="button"
+          onClick={() => navigate("/")}
+          className={s.buttonBack}
+        >
+          Back to list
+        </button>
+      </>
     );
 
   if (isLoading) {
-    return (
-      <div className={listS.stateBoxWrapper}>
-        <div className={listS.stateBox}>
-          <h2 className={listS.stateTitle}>Loading...</h2>
-          <p className={listS.stateText}>Загружаем список персонажей.</p>
-        </div>
-      </div>
-    );
+    return <ShowLoading>Загружаем список персонажей.</ShowLoading>;
   }
   if (error) {
-    return (
-      <div className={listS.stateBoxWrapper}>
-        <div className={`${listS.stateBox} ${listS.stateBoxError}`}>
-          <h2 className={`${listS.stateTitle} ${listS.stateTitleError}`}>
-            Error
-          </h2>
-          <p className={listS.stateText}>{error}</p>
-        </div>
-      </div>
-    );
+    return <ShowError>{error}</ShowError>;
   }
-  if (favorites.length === 0)
-    return (
-      <div className={listS.stateBoxWrapper}>
-        <div className={listS.stateBox}>
-          <h2 className={listS.stateTitle}>No favorites yet</h2>
-          <p className={listS.stateText}>
-            Добавь персонажей в избранное на главной странице.
-          </p>
-          <button
-            type="button"
-            onClick={() => navigate("/")}
-            className={s.buttonBack}
-          >
-            Back to list
-          </button>
-        </div>
-      </div>
-    );
 
   const filteredFavorites = favorites.filter((x) =>
     x.name.toLowerCase().includes(search.toLowerCase()),

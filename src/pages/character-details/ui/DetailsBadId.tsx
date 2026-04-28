@@ -1,9 +1,8 @@
-import type { NavigateFunction } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import styles from "../../../entities/character/ui/allCharacterComponents.module.css";
-interface DetailsBadIdProps {
-  navigate: NavigateFunction;
-}
-export default function DetailsBadId({ navigate }: DetailsBadIdProps) {
+
+export default function DetailsBadId() {
+  const navigate = useNavigate();
   return (
     <div className={styles.stateBoxWrapper}>
       <div className={styles.stateBox}>
