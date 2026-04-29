@@ -34,9 +34,7 @@ export default function CharacterDetailsPage() {
 
   if (!isValidId) {
     return (
-      <NotCorrectIndicate button="back to lit">
-        не коректный id
-      </NotCorrectIndicate>
+      <NotCorrectIndicate buttonHome={true}>не коректный id</NotCorrectIndicate>
     );
   }
 
@@ -49,11 +47,11 @@ export default function CharacterDetailsPage() {
   }
 
   if (error) {
-    return <ShowError button="back to list">{error}</ShowError>;
+    return <ShowError buttonHome={true}>{error}</ShowError>;
   }
 
   if (!data) {
-    return <ShowNoData button="back to list">non data</ShowNoData>;
+    return <ShowNoData buttonHome={true}>non data</ShowNoData>;
   }
 
   return (

@@ -20,7 +20,7 @@ export default function FavoritePage() {
   const navigate = useNavigate();
   if (favoriteIds.length === 0)
     return (
-      <ShowNotFound button="Back to list">
+      <ShowNotFound buttonHome={true} buttonBack={true}>
         Добавь персонажей в избранное на главной странице.
       </ShowNotFound>
     );
