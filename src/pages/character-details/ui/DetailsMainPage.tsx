@@ -1,11 +1,11 @@
-import type { NavigateFunction } from "react-router-dom";
-import type { Character } from "../../../entities/character/model/types";
-import styles from "../../../entities/character/ui/allCharacterComponents.module.css";
+import type { NavigateFunction } from 'react-router-dom'
+import type { Character } from '@/entities/character'
+import styles from '../../../entities/character/ui/allCharacterComponents.module.css'
 interface DetailsMainPageProps {
-  data: Character;
-  navigate: NavigateFunction;
-  onToggleFavorite: (character: number) => void;
-  favorite: boolean;
+  data: Character
+  navigate: NavigateFunction
+  onToggleFavorite: (character: number) => void
+  favorite: boolean
 }
 export default function DetailsMainPage({
   data,
@@ -49,7 +49,7 @@ export default function DetailsMainPage({
           <div className={styles.detailsActions}>
             <button
               type="button"
-              onClick={() => navigate("/")}
+              onClick={() => navigate('/')}
               className={`${styles.button} ${styles.buttonSecondary}`}
             >
               Back to list
@@ -62,11 +62,11 @@ export default function DetailsMainPage({
                 favorite ? styles.buttonPrimary : styles.buttonSecondary
               }`}
             >
-              {favorite ? "♥ В избранном" : "♡ В избранное"}
+              {favorite ? '♥ В избранном' : '♡ В избранное'}
             </button>
           </div>
         </article>
       </div>
     </section>
-  );
+  )
 }

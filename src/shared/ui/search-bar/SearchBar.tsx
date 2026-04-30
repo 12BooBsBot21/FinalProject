@@ -1,8 +1,8 @@
-import s from "./searchBar.module.css";
+import s from './searchBar.module.css'
 
 interface SearchBarProps {
-  valueSearching: string;
-  setValueSearching: (value: string) => void;
+  valueSearching: string
+  setValueSearching: (value: string) => void
 }
 
 export default function SearchBar({
@@ -22,5 +22,5 @@ export default function SearchBar({
         onChange={(e) => setValueSearching(e.target.value)}
       />
     </div>
-  );
+  )
 }

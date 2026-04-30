@@ -1,23 +1,23 @@
 export interface Character {
-  id: number;
-  name: string;
-  status: string;
-  species: string;
-  image: string;
-  gender: string;
+  id: number
+  name: string
+  status: string
+  species: string
+  image: string
+  gender: string
 }
 
 export interface CharacterResponse {
-  results: Character[];
+  results: Character[]
 }
 
 //favorite types
 export interface FavoriteCharacter extends Character {
-  addedAt?: number;
+  addedAt?: number
 }
 export interface FavoriteCharacters {
-  favorites: FavoriteCharacter[];
+  favorites: FavoriteCharacter[]
 }
 export interface FavoriteIdSlice {
-  ids: number[];
+  ids: number[]
 }

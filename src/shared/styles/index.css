@@ -25,7 +25,7 @@ body {
 }
 
 body {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: var(--text-main);
   background:
     radial-gradient(circle at top left, #dbeafe 0%, transparent 45%),
@@ -101,7 +101,11 @@ a {
 
 .buttonFavorite {
   color: #fff;
-  background: linear-gradient(135deg, var(--brand) 0%, var(--brand-strong) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--brand) 0%,
+    var(--brand-strong) 100%
+  );
   border-color: transparent;
 }
 

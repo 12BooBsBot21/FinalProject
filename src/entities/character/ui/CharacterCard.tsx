@@ -1,16 +1,16 @@
-import { Link } from "react-router-dom";
-import type { Character } from "../model/types";
-import s from "./allCharacterComponents.module.css";
-import { toggleFavorite } from "../../../features/favorite/model/favoriteSlice";
-import { useAppDispatch } from "../../../app/store/hooks";
-import useIsFavorite from "../../../features/favorite/model/useIsFavorite";
+import { Link } from 'react-router-dom'
+import type { Character } from '@/entities/character'
+import s from './allCharacterComponents.module.css'
+import { toggleFavorite } from '../../../features/favorite/model/favoriteSlice'
+import { useAppDispatch } from '../../../app/store/hooks'
+import useIsFavorite from '../../../features/favorite/model/useIsFavorite'
 interface CharacterCardProps {
-  character: Character;
+  character: Character
 }
 
-export default function CharacterCard({ character }: CharacterCardProps) {
-  const dispatch = useAppDispatch();
-  const favorite = useIsFavorite(character.id);
+export function CharacterCard({ character }: CharacterCardProps) {
+  const dispatch = useAppDispatch()
+  const favorite = useIsFavorite(character.id)
   return (
     <article className={s.card}>
       <Link to={`/characters/${character.id}`} className={s.cardLink}>
@@ -24,7 +24,7 @@ export default function CharacterCard({ character }: CharacterCardProps) {
         <div className={s.cardContent}>
           <h3 className={s.cardTitle}>{character.name}</h3>
           <p className={s.cardStatus}>
-            <span className={s.cardStatusLabel}>Status:</span>{" "}
+            <span className={s.cardStatusLabel}>Status:</span>{' '}
             {character.status}
           </p>
         </div>
@@ -36,9 +36,9 @@ export default function CharacterCard({ character }: CharacterCardProps) {
           className={`${s.button} 
             ${favorite ? s.buttonPrimary : s.buttonSecondary}`}
         >
-          {favorite ? "♥ В избранном" : "♡ В избранное"}
+          {favorite ? '♥ В избранном' : '♡ В избранное'}
         </button>
       </div>
     </article>
-  );
+  )
 }

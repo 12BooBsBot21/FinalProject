@@ -1,9 +1,9 @@
-import { NavLink, Outlet } from "react-router-dom";
-import SearchBar from "../../../shared/ui/search-bar/SearchBar";
-import { useState } from "react";
+import { NavLink, Outlet } from 'react-router-dom'
+import SearchBar from '../../../shared/ui/search-bar/SearchBar'
+import { useState } from 'react'
 
-export default function Layout() {
-  const [search, setSearch] = useState<string>("");
+export function Layout() {
+  const [search, setSearch] = useState<string>('')
   return (
     <div className="appShell">
       <header className="appHeader">
@@ -16,7 +16,7 @@ export default function Layout() {
             to="/"
             end
             className={({ isActive }) =>
-              `buttonGhost ${isActive ? "buttonFavorite" : ""}`
+              `buttonGhost ${isActive ? 'buttonFavorite' : ''}`
             }
           >
             Главная
@@ -24,7 +24,7 @@ export default function Layout() {
           <NavLink
             to="/favorites"
             className={({ isActive }) =>
-              `buttonGhost ${isActive ? "buttonFavorite" : ""}`
+              `buttonGhost ${isActive ? 'buttonFavorite' : ''}`
             }
           >
             Избранное
@@ -36,5 +36,5 @@ export default function Layout() {
         <Outlet context={search} />
       </main>
     </div>
-  );
+  )
 }

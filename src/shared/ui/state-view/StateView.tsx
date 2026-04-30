@@ -1,9 +1,9 @@
-import { useNavigate } from "react-router-dom";
-import styles from "./stateView.module.css";
+import { useNavigate } from 'react-router-dom'
+import styles from './stateView.module.css'
 interface ShowProps {
-  children: string;
-  buttonHome?: boolean;
-  buttonBack?: boolean;
+  children: string
+  buttonHome?: boolean
+  buttonBack?: boolean
 }
 export function ShowLoading({ children }: ShowProps) {
   return (
@@ -13,14 +13,14 @@ export function ShowLoading({ children }: ShowProps) {
         <p className={styles.stateText}>{children}</p>
       </div>
     </div>
-  );
+  )
 }
 export function ShowError({
   children,
   buttonHome = false,
   buttonBack = false,
 }: ShowProps) {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
   return (
     <div className={styles.stateBoxWrapper}>
       <div className={`${styles.stateBox} ${styles.stateBoxError}`}>
@@ -31,7 +31,7 @@ export function ShowError({
         {buttonHome && (
           <button
             type="button"
-            onClick={() => navigate("/")}
+            onClick={() => navigate('/')}
             className={`${styles.button} ${styles.buttonPrimary}`}
           >
             home page
@@ -48,14 +48,14 @@ export function ShowError({
         )}
       </div>
     </div>
-  );
+  )
 }
 export function ShowNotFound({
   children,
   buttonHome = false,
   buttonBack = false,
 }: ShowProps) {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
   return (
     <div className={styles.stateBoxWrapper}>
       <div className={styles.stateBox}>
@@ -64,7 +64,7 @@ export function ShowNotFound({
         {buttonHome && (
           <button
             type="button"
-            onClick={() => navigate("/")}
+            onClick={() => navigate('/')}
             className={`${styles.button} ${styles.buttonPrimary}`}
           >
             home page
@@ -81,14 +81,14 @@ export function ShowNotFound({
         )}
       </div>
     </div>
-  );
+  )
 }
 export function ShowNoData({
   children,
   buttonHome = false,
   buttonBack = false,
 }: ShowProps) {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
   return (
     <div className={styles.stateBoxWrapper}>
       <div className={styles.stateBox}>
@@ -113,14 +113,14 @@ export function ShowNoData({
         )}
       </div>
     </div>
-  );
+  )
 }
 export function NotCorrectIndicate({
   children,
   buttonHome = false,
   buttonBack = false,
 }: ShowProps) {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
   return (
     <div className={styles.stateBoxWrapper}>
       <div className={styles.stateBox}>
@@ -129,7 +129,7 @@ export function NotCorrectIndicate({
         {buttonHome && (
           <button
             type="button"
-            onClick={() => navigate("/")}
+            onClick={() => navigate('/')}
             className={`${styles.button} ${styles.buttonPrimary}`}
           >
             home page
@@ -146,5 +146,5 @@ export function NotCorrectIndicate({
         )}
       </div>
     </div>
-  );
+  )
 }
