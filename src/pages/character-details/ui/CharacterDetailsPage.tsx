@@ -4,7 +4,7 @@ import { useFetch } from '@/shared/index'
 import type { Character } from '@/entities/character'
 import DetailsMainPage from './DetailsMainPage'
 import { toggleFavorite } from '@/features/favorite'
-import { useAppDispatch, useAppSelector } from '../../../app/store/hooks'
+import { useAppDispatch, useAppSelector } from '@/app/store'
 import {
   NotCorrectIndicate,
   ShowError,
@@ -13,7 +13,7 @@ import {
   ShowNotFound,
 } from '@/shared/index'
 
-export default function CharacterDetailsPage() {
+export function CharacterDetailsPage() {
   const dispatch = useAppDispatch()
   const { id } = useParams()
   const numericId = Number(id)

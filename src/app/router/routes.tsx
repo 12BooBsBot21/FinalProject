@@ -1,8 +1,8 @@
 import { createBrowserRouter } from 'react-router-dom'
 import { Layout } from '@/widgets/layout'
-import CharacterPage from '../../pages/characters/ui/CharactersPage'
-import FavoritePage from '../../pages/favorites/ui/FavoritesPage'
-import CharacterDetailsPage from '../../pages/character-details/ui/CharacterDetailsPage'
+import { CharacterPage } from '@/pages'
+import { FavoritePage } from '@/pages'
+import { CharacterDetailsPage } from '@/pages'
 
 export const routes = createBrowserRouter([
   {

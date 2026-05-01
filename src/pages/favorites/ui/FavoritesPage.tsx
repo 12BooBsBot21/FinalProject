@@ -3,10 +3,10 @@ import s from './favoritePage.module.css'
 import { useNavigate, useOutletContext } from 'react-router-dom'
 import { useFetch } from '@/shared/index'
 import type { Character } from '@/entities/character'
-import { useAppSelector } from '../../../app/store/hooks'
+import { useAppSelector } from '@/app/store'
 import { ShowError, ShowLoading, ShowNotFound } from '@/shared/index'
 
-export default function FavoritePage() {
+export function FavoritePage() {
   const search = useOutletContext<string>()
   const favoriteIds = useAppSelector((state) => state.FavoriteSliceReducer.ids)
   const endUrl = favoriteIds.length > 0 ? `/${favoriteIds.join(',')}` : ''

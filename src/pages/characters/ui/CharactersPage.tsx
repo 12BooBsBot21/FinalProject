@@ -5,7 +5,7 @@ import type { CharacterResponse } from '@/entities/character'
 import { CharacterList } from '@/entities/character'
 import { ShowError, ShowLoading, ShowNoData } from '@/shared/index'
 
-export default function CharacterPage() {
+export function CharacterPage() {
   const search = useOutletContext<string>()
   const nameAfterDebounce = useDebounce(search, 1100)
   const { data, isLoading, error } = useFetch<CharacterResponse>(
