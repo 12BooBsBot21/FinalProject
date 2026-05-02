@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import type { Character } from '@/entities/character'
 import s from './allCharacterComponents.module.css'
 import { toggleFavorite } from '../../../features/favorite/model/favoriteSlice'
-import { useAppDispatch } from '@/app/store'
+import { useAppDispatch } from '@/app'
 import { useIsFavorite } from '@/features/favorite'
 interface CharacterCardProps {
   character: Character

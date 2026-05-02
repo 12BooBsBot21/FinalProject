@@ -4,7 +4,7 @@ import { useFetch } from '@/shared/index'
 import type { Character } from '@/entities/character'
 import DetailsMainPage from './DetailsMainPage'
 import { toggleFavorite } from '@/features/favorite'
-import { useAppDispatch, useAppSelector } from '@/app/store'
+import { useAppDispatch, useAppSelector } from '@/app'
 import {
   NotCorrectIndicate,
   ShowError,

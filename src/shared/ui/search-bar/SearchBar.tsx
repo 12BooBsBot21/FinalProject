@@ -1,5 +1,4 @@
-import s from './searchBar.module.css'
-
+import { TextInput } from '@mantine/core'
 interface SearchBarProps {
   valueSearching: string
   setValueSearching: (value: string) => void
@@ -10,17 +9,13 @@ export default function SearchBar({
   setValueSearching,
 }: SearchBarProps) {
   return (
-    <div className={s.searchBar}>
-      <label htmlFor="input" className={s.searchBarLabel}>
-        search
-      </label>
-      <input
-        id="input"
-        placeholder="search by name"
-        value={valueSearching}
-        className={s.searchBarInput}
-        onChange={(e) => setValueSearching(e.target.value)}
-      />
-    </div>
+    <TextInput
+      label="Search"
+      placeholder="Search by name"
+      value={valueSearching}
+      onChange={(event) => setValueSearching(event.currentTarget.value)}
+      radius="md"
+      size="md"
+    />
   )
 }

@@ -1,4 +1,4 @@
-import { useAppSelector } from '@/app/store'
+import { useAppSelector } from '@/app'
 
 export function useIsFavorite(id: number) {
   const favoriteStore = useAppSelector(
