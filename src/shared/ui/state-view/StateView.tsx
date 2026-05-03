@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import styles from './stateView.module.css'
+import { Button } from '@mantine/core'
 interface ShowProps {
   children: string
   buttonHome?: boolean
@@ -28,24 +29,8 @@ export function ShowError({
           Error
         </h1>
         <p className={styles.stateText}>{children}</p>
-        {buttonHome && (
-          <button
-            type="button"
-            onClick={() => navigate('/')}
-            className={`${styles.button} ${styles.buttonPrimary}`}
-          >
-            home page
-          </button>
-        )}
-        {buttonBack && (
-          <button
-            type="button"
-            onClick={() => navigate(-1)}
-            className={`${styles.button} ${styles.buttonPrimary}`}
-          >
-            backS
-          </button>
-        )}
+        {buttonHome && <Button onClick={() => navigate('/')}>home page</Button>}
+        {buttonBack && <Button onClick={() => navigate(-1)}>backS</Button>}
       </div>
     </div>
   )
@@ -61,24 +46,8 @@ export function ShowNotFound({
       <div className={styles.stateBox}>
         <h1 className={styles.stateTitle}>Nothing found</h1>
         <p className={styles.stateText}>{children}</p>
-        {buttonHome && (
-          <button
-            type="button"
-            onClick={() => navigate('/')}
-            className={`${styles.button} ${styles.buttonPrimary}`}
-          >
-            home page
-          </button>
-        )}
-        {buttonBack && (
-          <button
-            type="button"
-            onClick={() => navigate(-1)}
-            className={`${styles.button} ${styles.buttonPrimary}`}
-          >
-            back
-          </button>
-        )}
+        {buttonHome && <Button onClick={() => navigate('/')}>home page</Button>}
+        {buttonBack && <Button onClick={() => navigate(-1)}>back</Button>}
       </div>
     </div>
   )
@@ -93,24 +62,8 @@ export function ShowNoData({
     <div className={styles.stateBoxWrapper}>
       <div className={styles.stateBox}>
         <h1 className={styles.stateTitle}>{children}</h1>
-        {buttonHome && (
-          <button
-            type="button"
-            onClick={() => navigate(-1)}
-            className={`${styles.button} ${styles.buttonPrimary}`}
-          >
-            home page
-          </button>
-        )}
-        {buttonBack && (
-          <button
-            type="button"
-            onClick={() => navigate(-1)}
-            className={`${styles.button} ${styles.buttonPrimary}`}
-          >
-            back
-          </button>
-        )}
+        {buttonHome && <Button onClick={() => navigate('/')}>home page</Button>}
+        {buttonBack && <Button onClick={() => navigate(-1)}>back</Button>}
       </div>
     </div>
   )
@@ -126,24 +79,8 @@ export function NotCorrectIndicate({
       <div className={styles.stateBox}>
         <h1 className={styles.stateTitle}>Not valid ID</h1>
         <p className={styles.stateText}>{children}</p>
-        {buttonHome && (
-          <button
-            type="button"
-            onClick={() => navigate('/')}
-            className={`${styles.button} ${styles.buttonPrimary}`}
-          >
-            home page
-          </button>
-        )}
-        {buttonBack && (
-          <button
-            type="button"
-            onClick={() => navigate(-1)}
-            className={`${styles.button} ${styles.buttonPrimary}`}
-          >
-            back
-          </button>
-        )}
+        {buttonHome && <Button onClick={() => navigate('/')}>home page</Button>}
+        {buttonBack && <Button onClick={() => navigate(-1)}>back</Button>}
       </div>
     </div>
   )

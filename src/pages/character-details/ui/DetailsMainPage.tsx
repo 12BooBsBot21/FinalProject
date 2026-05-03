@@ -1,6 +1,7 @@
 import type { NavigateFunction } from 'react-router-dom'
 import type { Character } from '@/entities/character'
 import styles from '../../../entities/character/ui/allCharacterComponents.module.css'
+import { Button, Card } from '@mantine/core'
 interface DetailsMainPageProps {
   data: Character
   navigate: NavigateFunction
@@ -14,7 +15,7 @@ export default function DetailsMainPage({
   favorite,
 }: DetailsMainPageProps) {
   return (
-    <section className={styles.pageSection}>
+    <Card>
       <div className={styles.detailsGrid}>
         <div className={styles.detailsImageCard}>
           <div className={styles.detailsImageWrapper}>
@@ -47,15 +48,15 @@ export default function DetailsMainPage({
           </div>
 
           <div className={styles.detailsActions}>
-            <button
+            <Button
               type="button"
               onClick={() => navigate('/')}
               className={`${styles.button} ${styles.buttonSecondary}`}
             >
               Back to list
-            </button>
+            </Button>
 
-            <button
+            <Button
               type="button"
               onClick={() => onToggleFavorite(data.id)}
               className={`${styles.button} ${
@@ -63,10 +64,10 @@ export default function DetailsMainPage({
               }`}
             >
               {favorite ? '♥ В избранном' : '♡ В избранное'}
-            </button>
+            </Button>
           </div>
         </article>
       </div>
-    </section>
+    </Card>
   )
 }

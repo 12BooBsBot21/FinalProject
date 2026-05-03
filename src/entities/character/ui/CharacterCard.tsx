@@ -4,23 +4,24 @@ import s from './allCharacterComponents.module.css'
 import { toggleFavorite } from '../../../features/favorite/model/favoriteSlice'
 import { useAppDispatch } from '@/app'
 import { useIsFavorite } from '@/features/favorite'
+import { Button, Card } from '@mantine/core'
 interface CharacterCardProps {
   character: Character
 }
 
 export function CharacterCard({ character }: CharacterCardProps) {
   const dispatch = useAppDispatch()
-  const favorite = useIsFavorite(character.id)
+  const isFavorite = useIsFavorite(character.id)
   return (
-    <article className={s.card}>
+    <Card className={s.card}>
       <Link to={`/characters/${character.id}`} className={s.cardLink}>
-        <div className={s.cardImageWrapper}>
+        <Card.Section>
           <img
             src={character.image}
             alt={character.name}
             className={s.cardImage}
           />
-        </div>
+        </Card.Section>
         <div className={s.cardContent}>
           <h3 className={s.cardTitle}>{character.name}</h3>
           <p className={s.cardStatus}>
@@ -30,15 +31,15 @@ export function CharacterCard({ character }: CharacterCardProps) {
         </div>
       </Link>
       <div className={s.cardAction}>
-        <button
-          type="button"
+        <Button
+          fullWidth
+          variant={isFavorite ? 'filled' : 'light'}
+          color="brand"
           onClick={() => dispatch(toggleFavorite(character.id))}
-          className={`${s.button} 
-            ${favorite ? s.buttonPrimary : s.buttonSecondary}`}
         >
-          {favorite ? '♥ В избранном' : '♡ В избранное'}
-        </button>
+          {isFavorite ? '♥ В избранном' : '♡ В избранное'}
+        </Button>
       </div>
-    </article>
+    </Card>
   )
 }

@@ -5,6 +5,7 @@ import { useFetch } from '@/shared/index'
 import type { Character } from '@/entities/character'
 import { useAppSelector } from '@/app'
 import { ShowError, ShowLoading, ShowNotFound } from '@/shared/index'
+import { Button } from '@mantine/core'
 
 export function FavoritePage() {
   const search = useOutletContext<string>()
@@ -36,9 +37,9 @@ export function FavoritePage() {
     <section className={s.pageWrapper}>
       <div className={s.pageHeader}>
         <h2 className={s.pageTitle}>Favorites</h2>
-        <button onClick={() => navigate('/')} className={s.buttonBack}>
+        <Button onClick={() => navigate('/')} className={s.buttonBack}>
           Back to list
-        </button>
+        </Button>
       </div>
       <CharacterList characters={search ? filteredFavorites : favorites} />
     </section>
