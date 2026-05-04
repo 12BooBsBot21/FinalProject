@@ -1,0 +1,51 @@
+.stateBoxWrapper {
+  min-height: 42vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 0;
+}
+
+.stateBox {
+  width: min(460px, 100%);
+  padding: 20px;
+  border-radius: 16px;
+  border: 1px solid #d8e4f8;
+  background-color: #ffffff;
+  text-align: center;
+}
+
+.stateBoxError {
+  border-color: #fecaca;
+  background-color: #fff6f6;
+}
+
+.stateTitle {
+  margin: 0;
+  color: #10223a;
+  font-size: 28px;
+  line-height: 1.15;
+}
+
+.stateTitleError {
+  color: #b91c1c;
+}
+
+.stateText {
+  margin: 10px 0 0;
+  color: #5f6f85;
+  font-size: 15px;
+}
+.button {
+  width: 100%;
+  border: 1px solid transparent;
+  border-radius: 12px;
+  padding: 11px 14px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    background-color 0.2s ease,
+    border-color 0.2s ease;
+}

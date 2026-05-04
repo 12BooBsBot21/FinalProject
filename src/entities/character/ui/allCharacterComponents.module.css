@@ -1,0 +1,277 @@
+.pageSection {
+  padding: 4px 0;
+}
+
+.pageContainer,
+.listWrapper {
+  width: 100%;
+}
+
+.listWrapper {
+  padding: 4px 0 0;
+}
+
+.listGrid {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.stateBoxWrapper {
+  min-height: 42vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 0;
+}
+
+.stateBox {
+  width: min(460px, 100%);
+  padding: 20px;
+  border-radius: 16px;
+  border: 1px solid #d8e4f8;
+  background-color: #ffffff;
+  text-align: center;
+}
+
+.stateBoxError {
+  border-color: #fecaca;
+  background-color: #fff6f6;
+}
+
+.stateTitle {
+  margin: 0;
+  color: #10223a;
+  font-size: 28px;
+  line-height: 1.15;
+}
+
+.stateTitleError {
+  color: #b91c1c;
+}
+
+.stateText {
+  margin: 10px 0 0;
+  color: #5f6f85;
+  font-size: 15px;
+}
+
+.card {
+  overflow: hidden;
+  border-radius: 18px;
+  border: 1px solid #d8e4f8;
+  background: #ffffff;
+  box-shadow:
+    0 10px 24px rgba(16, 34, 58, 0.08),
+    0 2px 8px rgba(16, 34, 58, 0.05);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow:
+    0 16px 30px rgba(16, 34, 58, 0.12),
+    0 4px 10px rgba(16, 34, 58, 0.07);
+}
+
+.cardLink {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.cardLink:focus-visible {
+  outline: 2px solid #1d4ed8;
+  outline-offset: 2px;
+}
+
+.cardImageWrapper {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background: #eef4ff;
+}
+
+.cardImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.card:hover .cardImage {
+  transform: scale(1.04);
+}
+
+.cardContent {
+  padding: 14px 14px 8px;
+}
+
+.cardTitle {
+  margin: 0;
+  font-size: 20px;
+  color: #10223a;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.cardStatus {
+  margin: 8px 0 0;
+  color: #5f6f85;
+  font-size: 14px;
+}
+
+.cardStatusLabel {
+  color: #35506f;
+  font-weight: 600;
+}
+
+.cardAction {
+  padding: 0 14px 14px;
+}
+
+.button {
+  width: 100%;
+  border: 1px solid transparent;
+  border-radius: 12px;
+  padding: 11px 14px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    background-color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.button:hover {
+  transform: translateY(-1px);
+}
+
+.button:focus-visible {
+  outline: 2px solid #1d4ed8;
+  outline-offset: 2px;
+}
+
+.buttonPrimary {
+  color: #ffffff;
+  background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%);
+}
+
+.buttonPrimary:hover {
+  background: linear-gradient(135deg, #1b47c7 0%, #1d3b9c 100%);
+}
+
+.buttonSecondary {
+  color: #10223a;
+  background-color: #eef4ff;
+  border-color: #c9d9f2;
+}
+
+.buttonSecondary:hover {
+  background-color: #e4eeff;
+}
+
+.detailsGrid {
+  display: grid;
+  gap: 18px;
+}
+
+.detailsImageCard,
+.detailsInfoCard {
+  border: 1px solid #d8e4f8;
+  border-radius: 18px;
+  background-color: #ffffff;
+  box-shadow:
+    0 10px 24px rgba(16, 34, 58, 0.08),
+    0 2px 8px rgba(16, 34, 58, 0.05);
+}
+
+.detailsImageWrapper {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background: #eef4ff;
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+.detailsImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.detailsInfoCard {
+  padding: 20px;
+}
+
+.detailsTitle {
+  margin: 0;
+  font-size: clamp(28px, 3vw, 36px);
+  line-height: 1.1;
+  color: #10223a;
+}
+
+.detailsInfoList {
+  display: grid;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.detailsInfoItem {
+  border: 1px solid #d8e4f8;
+  background: #f8fbff;
+  border-radius: 12px;
+  padding: 12px;
+}
+
+.detailsInfoLabel {
+  margin: 0;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #5f6f85;
+}
+
+.detailsInfoValue {
+  margin: 6px 0 0;
+  font-size: 16px;
+  color: #10223a;
+  font-weight: 700;
+}
+
+.detailsActions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+@media (min-width: 540px) {
+  .listGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 860px) {
+  .listGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1080px) {
+  .listGrid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .detailsGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .detailsInfoCard {
+    padding: 24px;
+  }
+}

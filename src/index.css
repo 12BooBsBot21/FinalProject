@@ -1,111 +1,136 @@
 :root {
-  --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #fff;
-  --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
-  --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
-
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --mono: ui-monospace, Consolas, monospace;
-
-  font: 18px/145% var(--sans);
-  letter-spacing: 0.18px;
-  color-scheme: light dark;
-  color: var(--text);
-  background: var(--bg);
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-
-  @media (max-width: 1024px) {
-    font-size: 16px;
-  }
+  --bg-main: #f4f8ff;
+  --bg-panel: #ffffff;
+  --bg-soft: #eef4ff;
+  --text-main: #10223a;
+  --text-muted: #5f6f85;
+  --border-main: #d8e4f8;
+  --brand: #1d4ed8;
+  --brand-strong: #1e40af;
+  --danger: #b91c1c;
+  --shadow-main:
+    0 16px 40px rgba(16, 34, 58, 0.08), 0 4px 12px rgba(16, 34, 58, 0.05);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
-  }
-
-  #social .button-icon {
-    filter: invert(1) brightness(2);
-  }
-}
-
-#root {
-  width: 1126px;
-  max-width: 100%;
-  margin: 0 auto;
-  text-align: center;
-  border-inline: 1px solid var(--border);
-  min-height: 100svh;
-  display: flex;
-  flex-direction: column;
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
+html,
 body {
   margin: 0;
+  min-height: 100%;
 }
 
-h1,
-h2 {
-  font-family: var(--heading);
-  font-weight: 500;
-  color: var(--text-h);
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--text-main);
+  background:
+    radial-gradient(circle at top left, #dbeafe 0%, transparent 45%),
+    radial-gradient(circle at top right, #e0f2fe 0%, transparent 40%),
+    var(--bg-main);
 }
 
-h1 {
-  font-size: 56px;
-  letter-spacing: -1.68px;
-  margin: 32px 0;
-  @media (max-width: 1024px) {
-    font-size: 36px;
-    margin: 20px 0;
-  }
+a {
+  color: inherit;
 }
-h2 {
-  font-size: 24px;
-  line-height: 118%;
-  letter-spacing: -0.24px;
-  margin: 0 0 8px;
-  @media (max-width: 1024px) {
-    font-size: 20px;
-  }
+
+#root {
+  min-height: 100svh;
+  width: min(1200px, 100%);
+  margin: 0 auto;
+  padding: 24px 16px 40px;
 }
-p {
+
+.appShell {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.appHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 20px;
+  border: 1px solid var(--border-main);
+  border-radius: 20px;
+  background: linear-gradient(160deg, #ffffff 0%, #eff6ff 100%);
+  box-shadow: var(--shadow-main);
+}
+
+.appTitleBox {
+  display: grid;
+  gap: 6px;
+}
+
+.appTitle {
   margin: 0;
+  font-size: clamp(28px, 4vw, 40px);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
 }
 
-code,
-.counter {
-  font-family: var(--mono);
-  display: inline-flex;
-  border-radius: 4px;
-  color: var(--text-h);
-}
-
-code {
+.appSubtitle {
+  margin: 0;
+  color: var(--text-muted);
   font-size: 15px;
-  line-height: 135%;
-  padding: 4px 8px;
-  background: var(--code-bg);
+}
+
+.appNav {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.buttonFavorite,
+.buttonGhost {
+  border: 1px solid var(--border-main);
+  border-radius: 12px;
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition:
+    transform 0.2s ease,
+    background-color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.buttonFavorite {
+  color: #fff;
+  background: linear-gradient(
+    135deg,
+    var(--brand) 0%,
+    var(--brand-strong) 100%
+  );
+  border-color: transparent;
+}
+
+.buttonGhost {
+  color: var(--text-main);
+  background: var(--bg-panel);
+}
+
+.buttonFavorite:hover,
+.buttonGhost:hover {
+  transform: translateY(-1px);
+}
+
+.appContent {
+  min-height: 50vh;
+}
+
+@media (min-width: 768px) {
+  #root {
+    padding: 28px 24px 44px;
+  }
+
+  .appHeader {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
 }
